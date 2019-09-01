@@ -68,19 +68,3 @@ model.fit(x_train, y_train,
 
 model.save('mnist_model.h5')
 
-# # Save the weights
-# model.save_weights('model_weights.h5')
-# # Save the model architecture
-# with open('model_architecture.json', 'w') as f:
-#     f.write(model.to_json())
-
-# score = model.evaluate(x_test, y_test, verbose=0)
-# print('Test loss:', score[0])
-# print('Test accuracy:', score[1])
-# print('M:')
-# print(y_test[0])
-# print(x_test[0].shape)
-# x = x_test[0].reshape(1, 28, 28, 1)
-# out = model.predict(x)
-# print(out[0])
-# print(np.argmax(out[0]))
