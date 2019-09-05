@@ -39,6 +39,7 @@ class CNNPrediction(Resource):
     def post(self):
         args = single_parser.parse_args()
         image_file = args.file
+        # why it is static file names?
         image_file.save('img_1.jpg')
         img = Image.open('img_1.jpg')
         image_red = img.resize((28, 28))

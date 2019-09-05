@@ -9,10 +9,10 @@ model = load_model('mnist_model.h5')
 # The default Graph being used in the current thread.
 graph = tf.get_default_graph()
 
-img = Image.open('img_3.jpg')
+img = Image.open('images/img_3.jpg')
 # convert to array
 img = img_to_array(img.resize((28, 28)))
-# reshape args(num of img, size, size, 
+# reshape args(num of img, size, size, X)
 x = img.reshape(1, 28, 28, 1)
 x /= 255
 
