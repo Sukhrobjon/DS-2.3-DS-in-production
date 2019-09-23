@@ -71,11 +71,11 @@ class CNNPrediction(Resource):
         print(np.argmax(out[0]))
         r = np.argmax(out[0])
 
-        return {'prediction': str(r)}
-
-mnist_ref.document().set({"Filename": str(image_file), 
+        mnist_ref.document().set({"Filename": str(image_file),
                         "Time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
                         "Prediction": int(r)}) 
+
+        return {'prediction': str(r)}
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
