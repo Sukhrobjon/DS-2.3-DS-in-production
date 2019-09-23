@@ -1,8 +1,0 @@
-flask
-flask_restplus
-tensorflow
-keras
-numpy
-Pillow
-werkzeug
-firebase_admin
