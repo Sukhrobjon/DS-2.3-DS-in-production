@@ -1,10 +1,5 @@
 # Make a flask API for our DL Model
 
-# For Logging w/ Firestore
-import os
-import datetime
-from firebase_admin import credentials, firestore, initialize_app
-
 from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 from flask_restplus import Api, Resource, fields
@@ -15,6 +10,10 @@ from PIL import Image
 from keras.models import model_from_json
 import tensorflow as tf
 
+# For Logging w/ Firestore
+import os
+import datetime
+from firebase_admin import credentials, firestore, initialize_app
 
 application = app = Flask(__name__)
 
@@ -71,9 +70,7 @@ class CNNPrediction(Resource):
         print(np.argmax(out[0]))
         r = np.argmax(out[0])
 
-        mnist_ref.document().set({"Filename": str(image_file),
-                        "Time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
-                        "Prediction": int(r)}) 
+        mnist_ref.document().set({u"Filename": str(image_file), u"Time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), u"Prediction": int(r)}) 
 
         return {'prediction': str(r)}
 
