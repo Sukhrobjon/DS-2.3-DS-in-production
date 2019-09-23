@@ -236,4 +236,6 @@ Temporary Items
 # Ignore all local history of files
 .history
 
+### Custom ignored files
+key.json
 # End of https://www.gitignore.io/api/macos,flask,python,visualstudiocode,jupyternotebooks

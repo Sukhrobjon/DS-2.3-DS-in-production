@@ -1,5 +1,9 @@
 # Make a flask API for our DL Model
 
+# For Logging w/ Firestore
+import os
+import datetime
+from firebase_admin import credentials, firestore, initialize_app
 
 from keras.preprocessing.image import img_to_array
 from keras.models import load_model
@@ -13,6 +17,14 @@ import tensorflow as tf
 
 
 application = app = Flask(__name__)
+
+# Initialize Firestore DB
+cred = credentials.Certificate('key.json')
+default_app = initialize_app(cred)
+db = firestore.client()
+mnist_ref = db.collection('mnist_responses')
+
+
 api = Api(app, version='1.0', title='MNIST Classification',
           description='CNN for Mnist')
 ns = api.namespace('Make_School', description='Methods')
@@ -61,6 +73,9 @@ class CNNPrediction(Resource):
 
         return {'prediction': str(r)}
 
+mnist_ref.document().set({"Filename": str(image_file), 
+                        "Time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+                        "Prediction": int(r)}) 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)

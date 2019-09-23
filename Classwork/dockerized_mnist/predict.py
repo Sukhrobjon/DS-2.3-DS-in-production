@@ -22,4 +22,4 @@ with graph.as_default():
 
 print(out[0])
 r = np.argmax(out[0])
-print(r)
+print(f"predicted number: {r}")
