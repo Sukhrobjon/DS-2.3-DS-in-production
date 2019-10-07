@@ -1,3 +1,5 @@
+# import findspark
+# findspark.init('/path/to/spark_home')
 from pyspark.mllib.regression import LinearRegressionWithSGD as lrSGD
 from pyspark.mllib.regression import LabeledPoint
 from pyspark.sql import SparkSession
